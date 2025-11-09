@@ -30,7 +30,10 @@ return {
           NeoTreeNormal = {bg = "${float_bg}"},
           NeoTreeNormalNC = {bg = "${float_bg}"},
           NeoTreeRootName = {fg = "${blue}"},
-          NeoTreeDirectoryIcon = {fg = "${blue}"}
+          NeoTreeDirectoryIcon = {fg = "${blue}"},
+          TroubleIndent = {bg = "${float_bg}", fg= "${line_number}"},
+          TroublePos = {bg = "${float_bg}"},
+          EdgyIcon = {bg = "${float_bg}"}
           -- SnacksPickerCursorLine = {bg = "${bg}"},
           -- SnacksPickerListCursorLine = {bg = "${bg}"},
           -- SnacksPickerPreviewCursorLine = {bg = "${bg}"},

@@ -9,5 +9,5 @@ return {
       { "<leader>qq", false },
     },
   },
-  { "tiagovla/scope.nvim", config = true, enabled = false }
+  { "tiagovla/scope.nvim", config = true, enabled = true }
 }
