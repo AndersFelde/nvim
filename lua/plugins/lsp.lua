@@ -51,7 +51,7 @@ return {
             {
               "<leader>lR",
               function()
-                Snacks.picker.lsp_references({ focus = "list" })
+                Snacks.picker.lsp_references()
               end,
               desc = "References",
               nowait = true,
@@ -81,9 +81,46 @@ return {
     opts_extend = { "ensure_installed" },
     opts = {
       ensure_installed = {
+        "ruff",
+        "json-lsp",
+        "lua-language-server",
         "stylua",
         "shfmt",
       },
     },
+  },
+  {
+    "mrjones2014/codesettings.nvim",
+    opts = {
+      merge_lists = "append",
+      config_file_paths = {
+        ".vscode/settings.json",
+        "codesettings.json",
+        "lspsettings.json",
+      },
+    },
+  },
+
+  -- Patch LazyVim’s built-in lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    opts = function(_, opts)
+      local cs = require("codesettings")
+
+      for name, config in pairs(opts.servers) do
+        if config.before_init then
+          config.before_init = function(_, new_config)
+            new_config.before_init(_, new_config)
+            new_config = cs.with_local_settings(name, new_config)
+          end
+        else
+          config.before_init = function(_, new_config)
+            new_config = cs.with_local_settings(name, new_config)
+          end
+
+        end
+      end
+      return opts
+    end,
   },
 }
