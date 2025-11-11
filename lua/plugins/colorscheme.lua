@@ -20,6 +20,11 @@ return {
             -- float_bg = "#ffffff",
           },
         },
+        styles = {
+          methods = "bold",
+          functions = "bold"
+
+        },
         highlights = {
           SnacksPickerTree = { bg = "${float_bg}", fg = "${line_number}" },
           SnacksPickerTotals = { bg = "${float_bg}", fg = "${gray}" },
@@ -40,6 +45,7 @@ return {
           TroubleIndent = { bg = "${float_bg}", fg = "${line_number}" },
           TroublePos = { bg = "${float_bg}" },
           EdgyIcon = { bg = "${float_bg}" },
+          ["@odp.import_module.python"] = {fg = "${yellow}"},
           -- SnacksPickerCursorLine = {bg = "${bg}"},
           -- SnacksPickerListCursorLine = {bg = "${bg}"},
           -- SnacksPickerPreviewCursorLine = {bg = "${bg}"},
