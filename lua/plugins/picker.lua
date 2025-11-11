@@ -18,6 +18,16 @@ return {
     },
     opts = {
       picker = {
+        sources = {
+          projects = {
+
+            dev = {
+              "~/code",
+              "~/hack",
+              "~/.config",
+            },
+          },
+        },
         win = {
           input = {
             keys = {
