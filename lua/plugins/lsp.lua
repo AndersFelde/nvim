@@ -93,6 +93,7 @@ return {
     "mrjones2014/codesettings.nvim",
     opts = {
       merge_lists = "append",
+      live_reload = true,
       config_file_paths = {
         ".vscode/settings.json",
         "codesettings.json",
@@ -108,14 +109,15 @@ return {
       local cs = require("codesettings")
 
       for name, config in pairs(opts.servers) do
+        local old_before_init = config.before_init
         if config.before_init then
           config.before_init = function(_, new_config)
-            new_config.before_init(_, new_config)
-            new_config = cs.with_local_settings(name, new_config)
+            old_before_init(_, new_config)
+            new_config = cs.with_local_settings(new_config.name, new_config)
           end
         else
           config.before_init = function(_, new_config)
-            new_config = cs.with_local_settings(name, new_config)
+            new_config = cs.with_local_settings(new_config.name, new_config)
           end
 
         end
